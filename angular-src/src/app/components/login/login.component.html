@@ -1,7 +1,7 @@
 <h2 class="page-header">Login</h2>
 <form (submit)="onLoginSumbit()">
     <div class="form-group">
-        <label>Username</label>
+        <label>Username/Email</label>
         <input type="text" class="form-control" [(ngModel)]="username" name="username">
     </div>
     <div class="form-group">
@@ -10,3 +10,6 @@
     </div>
     <input type="submit" class="btn btn-primary" value="Login">
 </form>
+<div>
+    <a (click)='forgotPassword()'>Forgot my password</a>
+</div>

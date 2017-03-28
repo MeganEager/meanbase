@@ -42,9 +42,26 @@ module.exports.getUserById = function(id, callback){
     User.findById(id, callback);
 }
 
+//get user by username or email
+module.exports.getUserByUsernameOrEmail = function(username, email, callback){
+    const query = {
+        $or:[
+            {username: username},
+             {email: email}
+            ]
+    }
+    User.findOne(query, callback);
+}
+
 //get user by username
 module.exports.getUserByUsername = function(username, callback){
     const query = {username: username}
+    User.findOne(query, callback);
+}
+
+//get user by email
+module.exports.getUserByEmail = function(email, callback){
+    const query = {email: email}
     User.findOne(query, callback);
 }
 

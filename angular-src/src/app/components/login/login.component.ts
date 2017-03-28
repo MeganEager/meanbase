@@ -11,6 +11,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class LoginComponent implements OnInit {
     
     username: String;
+    email: String;
     password: String;
 
   constructor(private authService:AuthService, private router:Router, private flashMessage:FlashMessagesService) { }
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     onLoginSumbit(){
         const user = {
             username: this.username,
+            email: this.username,
             password: this.password
         }
         
@@ -34,6 +36,11 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['login']);
             }
         });
+    }
+    
+    
+    forgotPassword(){
+        console.log('forgotpassword');
     }
     
     

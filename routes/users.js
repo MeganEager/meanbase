@@ -27,18 +27,18 @@ router.post('/register', (req, res, next) =>{
 //authenticate
 router.post('/authenticate', (req, res, next) =>{
     const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
     
-    User.getUserByUsername(username, (err, user) =>{
+    User.getUserByUsernameOrEmail(username, email, (err, user) =>{
         if(err){
             throw err;
         }
-        
         if(!user){
             return res.json({success: false, msg: 'No user found'});
         }
         
-        User.comparePassword(password, user.password, (err, isMatch) =>{
+          User.comparePassword(password, user.password, (err, isMatch) =>{
             if(err){
                 throw err;
             }
