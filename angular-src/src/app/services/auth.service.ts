@@ -23,6 +23,18 @@ export class AuthService {
         return this.http.post('http://localhost:3000/users/authenticate', user,{headers: headers}).map(res => res.json());
     }
     
+    forgotPassword(user){
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('http://localhost:3000/users/sendForgotPassword', user,{headers: headers}).map(res => res.json());
+    }
+    
+    resetpassword(user){
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('http://localhost:3000/users/resetPassword', user,{headers: headers}).map(res => res.json());
+    }
+    
     storeUserData(token, user){
         localStorage.setItem('id_token', token);
         localStorage.setItem('user', JSON.stringify(user));

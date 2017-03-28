@@ -11,5 +11,6 @@
     <input type="submit" class="btn btn-primary" value="Login">
 </form>
 <div>
-    <a (click)='forgotPassword()'>Forgot my password</a>
+    <a [routerLink]="['/resetpassword']">Reset Password</a>
+    <a [routerLink]="['/forgotpassword']">Forgot my password</a>
 </div>

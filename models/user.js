@@ -65,6 +65,25 @@ module.exports.getUserByEmail = function(email, callback){
     User.findOne(query, callback);
 }
 
+//resets a password
+module.exports.resetPassword = function(user, newpassword, callback){
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newpassword, salt, (err, hash) =>{
+            if(err){
+                throw err;
+            }
+            user.password = hash;
+            const query = {
+                $or:[
+                    {username: user.username},
+                    {email: user.email}
+                ]
+            }  
+            User.update(query, user, callback);
+//            user.update(callback);
+        });
+    });
+}
 
 //compare password with one from user to one in database
 module.exports.comparePassword = function (enteredPassword, hashedPassword, callback){

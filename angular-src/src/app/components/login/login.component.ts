@@ -37,12 +37,4 @@ export class LoginComponent implements OnInit {
             }
         });
     }
-    
-    
-    forgotPassword(){
-        console.log('forgotpassword');
-    }
-    
-    
-    
 }
